@@ -1,39 +1,4 @@
-/**
- * 
- * Copyright 2012, Stoyan Rachev
- *
- * Licensed under the Apache License, Version 2.0 (the “License”);
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an “AS IS” BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.giladcourse.map;
-
-import static java.util.concurrent.TimeUnit.MILLISECONDS;
-import static java.util.concurrent.TimeUnit.NANOSECONDS;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ScheduledFuture;
 
 import org.junit.After;
 import org.junit.Before;
@@ -42,34 +7,31 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-/**
- * Unit tests
- * 
- * @author Stoyan Rachev
- * @author sangupta
- *
- */
+import java.util.*;
+import java.util.Map.Entry;
+import java.util.concurrent.ScheduledFuture;
+
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
+import static java.util.concurrent.TimeUnit.NANOSECONDS;
+import static org.junit.Assert.*;
+
+
 @RunWith(value = Parameterized.class)
 public class ConcurrentMapWithTimedEvictionTest extends AbstractConcurrentMapWithTimedEvictionTest {
 
     private static final int NUM_ITERATIONS = 10;
-    
+
     private static final int EVICT_MS = 8;
-    
+
     private static final int DELAY_MS = 20;
 
     @Parameters
     public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][] { { IMPL_CHMWTE_ESS, 1 } 
-                                              , { IMPL_CHMWTE_ESS, 50 }
-                                              , { IMPL_CHMWTE_NM_RT, 1 }
-                                              , { IMPL_CHMWTE_NM_RT, 50 }
-                                              , { IMPL_CHMWTE_NM_DT, 1 }
-                                              , { IMPL_CHMWTE_NM_DT, 50 }
-                                              , { IMPL_CHMWTE_NM_ST, 1 }
-                                              , { IMPL_CHMWTE_NM_ST, 50 }
-                                              , { IMPL_CHMWTE_PQ_ST, 1 }
-                                              , { IMPL_CHMWTE_PQ_ST, 50 } });
+        return Arrays.asList(new Object[][]{{IMPL_CHMWTE_ESS, 1}
+                , {IMPL_CHMWTE_ESS, 50}
+                , {IMPL_CHMWTE_NM_DT, 1}
+                , {IMPL_CHMWTE_NM_DT, 50}
+        });
     }
 
     private ConcurrentMapWithTimedEvictionDecorator<Integer, String> map;

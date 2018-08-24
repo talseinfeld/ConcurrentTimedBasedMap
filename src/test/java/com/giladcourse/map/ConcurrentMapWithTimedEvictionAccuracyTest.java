@@ -1,29 +1,4 @@
-/**
- * 
- * Copyright 2012, Stoyan Rachev
- *
- * Licensed under the Apache License, Version 2.0 (the “License”);
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an “AS IS” BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.giladcourse.map;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 
 import com.giladcourse.EvictionScheduler;
 import org.junit.After;
@@ -33,26 +8,28 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-/**
- * Unit tests
- * 
- * @author Stoyan Rachev
- * @author sangupta
- *
- */
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+
 @RunWith(value = Parameterized.class)
 public class ConcurrentMapWithTimedEvictionAccuracyTest extends AbstractConcurrentMapWithTimedEvictionTest {
 
     private static final int NUM_THREADS = 5;
-    
+
     private static final int NUM_ITERATIONS = 3;
-    
+
     private static final int EVICT_MS = 5 * 1000;
 
     @Parameters
     public static Collection<Object[]> data() {
         // @formatter:off
-        return Arrays.asList(new Object[][] { { IMPL_CHMWTE_ESS }, { IMPL_CHMWTE_NM_RT }, { IMPL_CHMWTE_NM_DT }, { IMPL_CHMWTE_NM_ST }, { IMPL_CHMWTE_PQ_ST }, });
+        return Arrays.asList(new Object[][] { { IMPL_CHMWTE_ESS }, { IMPL_CHMWTE_NM_DT }, });
         // @formatter:on
     }
 
@@ -92,14 +69,11 @@ public class ConcurrentMapWithTimedEvictionAccuracyTest extends AbstractConcurre
     protected void createMap() {
         int capacity = Math.min(numThreads * numIterations, MAX_MAP_SIZE);
         switch (impl) {
-        case IMPL_CHMWTE_ESS:
-        case IMPL_CHMWTE_NM_RT:
-        case IMPL_CHMWTE_NM_DT:
-        case IMPL_CHMWTE_NM_ST:
-        case IMPL_CHMWTE_PQ_ST:
-            map = new TestConcurrentMapWithTimedEvictionDecorator<Integer, String>(
-                    new ConcurrentHashMap<Integer, EvictibleEntry<Integer, String>>(capacity, LOAD_FACTOR, numThreads), scheduler);
-            break;
+            case IMPL_CHMWTE_ESS:
+            case IMPL_CHMWTE_NM_DT:
+                map = new TestConcurrentMapWithTimedEvictionDecorator<Integer, String>(
+                        new ConcurrentHashMap<Integer, EvictibleEntry<Integer, String>>(capacity, LOAD_FACTOR, numThreads), scheduler);
+                break;
         }
     }
 
