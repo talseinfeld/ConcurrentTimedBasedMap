@@ -25,15 +25,11 @@ public class ConcurrentMapWithTimedEvictionPerfTest extends AbstractConcurrentMa
 
     @Parameters
     public static Collection<Object[]> data() {
-        // @formatter:off
         return Arrays.asList(new Object[][] { { IMPL_CHM },
-                // { IMPL_GUAVA_CACHE },
-                { IMPL_GUAVA_CACHE_E },
-                // { IMPL_CHMWTE_NULL },
+
                 { IMPL_CHMWTE_ESS }, { IMPL_CHMWTE_NM_DT },
-                // { IMPL_CHMWTE_PQ_ST }
+
         });
-        // @formatter:on
     }
 
     public ConcurrentMapWithTimedEvictionPerfTest(int impl) {
