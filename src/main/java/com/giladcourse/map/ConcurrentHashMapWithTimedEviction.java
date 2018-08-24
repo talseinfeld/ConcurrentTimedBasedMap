@@ -1,10 +1,10 @@
 package com.giladcourse.map;
 
-import java.util.concurrent.ConcurrentHashMap;
-
-import com.giladcourse.scheduler.DelayedTaskEvictionScheduler;
 import com.giladcourse.ConcurrentMapWithTimedEviction;
 import com.giladcourse.EvictionScheduler;
+import com.giladcourse.scheduler.DelayedTaskEvictionScheduler;
+
+import java.util.concurrent.ConcurrentHashMap;
 
 
 public class ConcurrentHashMapWithTimedEviction<K, V> extends ConcurrentMapWithTimedEvictionDecorator<K, V> implements ConcurrentMapWithTimedEviction<K, V> {

@@ -1,9 +1,9 @@
 package com.giladcourse.map;
 
+import java.util.Map.Entry;
+
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.NANOSECONDS;
-
-import java.util.Map.Entry;
 
 public class EvictibleEntry<K, V> implements Entry<K, V> {
 

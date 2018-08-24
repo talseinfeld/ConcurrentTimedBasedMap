@@ -4,11 +4,11 @@ package com.giladcourse.scheduler;
 import com.giladcourse.EvictionQueue;
 import com.giladcourse.map.EvictibleEntry;
 
-import static java.util.concurrent.TimeUnit.NANOSECONDS;
-
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
+
+import static java.util.concurrent.TimeUnit.NANOSECONDS;
 
 
 public class DelayedTaskEvictionScheduler<K, V> extends AbstractQueueEvictionScheduler<K, V> {

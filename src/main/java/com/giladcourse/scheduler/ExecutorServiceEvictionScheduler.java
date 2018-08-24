@@ -1,13 +1,13 @@
 package com.giladcourse.scheduler;
 
+import com.giladcourse.EvictionScheduler;
+import com.giladcourse.map.EvictibleEntry;
+
 import java.lang.ref.WeakReference;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-
-import com.giladcourse.EvictionScheduler;
-import com.giladcourse.map.EvictibleEntry;
 
 public class ExecutorServiceEvictionScheduler<K, V> implements EvictionScheduler<K, V> {
 

@@ -1,11 +1,11 @@
 package com.giladcourse.queue;
 
+import com.giladcourse.EvictionQueue;
+import com.giladcourse.map.EvictibleEntry;
+
 import java.util.NoSuchElementException;
 import java.util.concurrent.ConcurrentNavigableMap;
 import java.util.concurrent.ConcurrentSkipListMap;
-
-import com.giladcourse.map.EvictibleEntry;
-import com.giladcourse.EvictionQueue;
 
 public class NavigableMapEvictionQueue<K, V> implements EvictionQueue<K, V> {
 

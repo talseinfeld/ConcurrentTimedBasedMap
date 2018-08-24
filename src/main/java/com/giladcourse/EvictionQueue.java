@@ -1,7 +1,6 @@
 package com.giladcourse;
 
 import com.giladcourse.map.EvictibleEntry;
-import com.giladcourse.scheduler.AbstractQueueEvictionScheduler;
 
 public interface EvictionQueue<K, V> {
 
