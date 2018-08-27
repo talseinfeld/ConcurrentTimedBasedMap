@@ -9,9 +9,9 @@ public class ExecutorBenchmarkRunner {
 
     public static void main(String... args) throws RunnerException {
         Options opts = new OptionsBuilder()
-                .measurementIterations(15)
-                .warmupIterations(25)
-                .forks(2)
+                .measurementIterations(50)
+                .warmupIterations(50)
+                .forks(1)
                 .threads(4)
                 .jvmArgs("-Xms1g", "-Xmx1g", "-Xmn800m", "-server")
                 .include(ExecutorBenchmarkTest.class.getSimpleName())

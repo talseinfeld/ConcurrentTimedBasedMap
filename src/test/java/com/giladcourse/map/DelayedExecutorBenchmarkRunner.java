@@ -9,10 +9,10 @@ public class DelayedExecutorBenchmarkRunner {
 
     public static void main(String... args) throws RunnerException {
         Options opts = new OptionsBuilder()
-                .measurementIterations(5)
-                .warmupIterations(5)
+                .measurementIterations(50)
+                .warmupIterations(50)
                 .forks(1)
-                .threads(3)
+                .threads(4)
                 .jvmArgs("-Xms1g", "-Xmx1g", "-Xmn800m", "-server")
                 .include(DelayedExecutorBenchmarkTest.class.getSimpleName())
                 .build();
